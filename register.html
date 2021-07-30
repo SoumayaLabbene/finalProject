@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="register.css" />
+    <script
+      src="https://kit.fontawesome.com/64c06d44c5.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="icon" type="image/png" href="/pictures/icon.png" />
+    <title>Travia</title>
+
+    <!-- firebase sdk -->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+  </head>
+
+  <body style="background-color: #231f20">
+    <!--Navbar-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navv">
+      <a class="navbar-brand" href="/indexx.html"
+        ><img src="/pictures/logo.png" width="154px" height="60px"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/indexx.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/accueil.html">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav" style="margin-right: 15px">
+          <li class="nav-item">
+            <a href="/login.html">
+              <button type="submit" class="btn btn-outline">Login</button></a
+            >
+            <a href="/register.html">
+              <button type="submit" class="btn btn-register">
+                Register
+              </button></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--register form-->
+    <div class="container-fluid px-1 py-5 mx-auto">
+      <div class="row d-flex justify-content-center">
+        <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+          <div class="card">
+            <h3 class="text-center mb-4">Register now !</h3>
+            <form class="form-card" onsubmit="event.preventDefault()">
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >First name<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="fname"
+                    name="fname"
+                    placeholder="Enter your first name"
+                    onblur="validate(1)"
+                  />
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Last name<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="lname"
+                    name="lname"
+                    placeholder="Enter your last name"
+                    onblur="validate(2)"
+                  />
+                </div>
+              </div>
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Email<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    onblur="validate(3)"
+                  />
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Username<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    onblur="validate(4)"
+                  />
+                </div>
+              </div>
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Address<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Enter your address"
+                    onblur="validate(5)"
+                  />
+                </div>
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Phone number<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="text"
+                    id="pn"
+                    name="pn"
+                    placeholder="Enter your phone number"
+                    onblur="validate(6)"
+                  />
+                </div>
+              </div>
+              <div class="row justify-content-between text-left">
+                <div class="form-group col-sm-6 flex-column d-flex">
+                  <label class="form-control-label px-3"
+                    >Password<span class="text-danger"> *</span></label
+                  >
+                  <input
+                    type="password"
+                    id="pass"
+                    name="pass"
+                    placeholder="Enter your password"
+                    onblur="validate(7)"
+                  />
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="form-group col-sm-6">
+                  <button
+                    type="submit"
+                    class="btn-block registerb"
+                    id="btnRegister"
+                  >
+                    Sign Up
+                  </button>
+                </div>
+              </div>
+            </form>
+            <div>
+              <p>Already have an account ? <a href="/login.html">Sign In</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>

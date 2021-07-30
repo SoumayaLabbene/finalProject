@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/64c06d44c5.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link rel="icon" type="image/png" href="pictures/icon.png" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Travia</title>
+
+    <!-- firebase sdk -->
+    <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
+
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-app.js"></script>
+
+    <!-- If you enabled Analytics in your project, add the Firebase SDK for Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-analytics.js"></script>
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.8.0/firebase-firestore.js"></script>
+  </head>
+
+  <body style="background-color: #efecd9">
+    <!--Navbar-->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light navv">
+      <a class="navbar-brand" href="/indexx.html"
+        ><img src="/pictures/logo.png" width="154px" height="60px"
+      /></a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#home"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about.html">About us</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/accueil.html">Contact</a>
+          </li>
+        </ul>
+        <div class="searchbaar">
+          <form class="form-inline">
+            <input
+              class="form-control mr-sm-2 searchbaar"
+              type="search"
+              onkeyup="search()"
+              id="searchbar"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
+        </div>
+        <ul class="navbar-nav" style="margin-right: 15px">
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              My account <i class="fas fa-user"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">My profile</a>
+              <a class="dropdown-item" href="/reservations.html"
+                >My reservations</a
+              >
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Log out</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!--home-->
+    <a name="home"></a>
+    <div class="container-fluid home">
+      <div
+        id="carouselExampleControls"
+        class="carousel slide carousel-fade"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              class="d-block w-100"
+              src="https://media.routard.com/image/39/2/paris-de-nuit.1564392.jpg"
+              alt="First slide"
+              height="789px"
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="carTitle">Paris, France</h1>
+              <!-- <p class="carCaption">bla bla bla</p> -->
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              src="https://g7y6h3a7.rocketcdn.me/wp-content/uploads/2019/03/Sortir-a-sydney-australie.jpg"
+              alt="Second slide"
+              height="789px"
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="carTitle">Sydney, Australia</h1>
+              <!-- <p class="carCaption">bla bla bla</p> -->
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img
+              class="d-block w-100"
+              src="https://cdn.turkishairlines.com/m/157e27aba7dc4632/original/Travel-Guide-of-New-York-via-Turkish-Airlines.jpg"
+              alt="Third slide"
+              height="789px"
+            />
+            <div class="carousel-caption d-md-block">
+              <h1 class="carTitle">New York, USA</h1>
+              <!-- <p class="carCaption">bla bla bla</p> -->
+            </div>
+          </div>
+        </div>
+        <a
+          class="carousel-control-prev"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselExampleControls"
+          role="button"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <!--Title-->
+
+    <div class="header" id="myHeader">
+      <div class="titree">
+        <h1 class="titre">Choose your next destination ...</h1>
+      </div>
+    </div>
+
+    <!--Card Destinations-->
+    <div class="container destinations">
+      <div class="row">
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C0">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://www.tunisiepromo.com/wp-content/uploads/2018/02/antalya-01.jpg"
+                    alt="Card image cap"
+                  />
+                  <h3 class="titreD">Antalya, Turkey</h3>
+                </div>
+                <div class="cardBody">
+                  <div class="flip-card-back">
+                    <p class="card-text">
+                      Antalya is the fifth-most populous city in Turkey and the
+                      capital of Antalya Province.
+                    </p>
+                    <a href="destinations/antalya.html" class="btn btn-primary"
+                      >See more</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C1">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://media.tacdn.com/media/attractions-splice-spp-674x446/07/0e/a2/78.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Buenos Aires, Argentina</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Buenos Aires (the Autonomous City of Buenos Aires), is the
+                    capital and largest city of Argentina.
+                  </p>
+                  <a
+                    href="destinations/buenosaires.html"
+                    class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C2">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://www.tripsavvy.com/thmb/e_s5RxeeuoUZGwxrl0u9jHsZzUw=/1414x1414/smart/filters:no_upscale()/GettyImages-541054032-5c86310cc9e77c00010c2232.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Johannesburg, South Africa</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Johannesburg, Jozi, Joburg or "The City of Gold", is the
+                    largest city in South Africa.
+                  </p>
+                  <a
+                    href="destinations/johannesburg.html"
+                    class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C3">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://www.sunresortshotels.com/sites/default/files/inline-images/14625650018_fe95e6264a_b.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Malé, Maldives</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Malé is the capital and most populous city in the Republic
+                    of Maldives.
+                  </p>
+                  <a href="destinations/malé.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C4">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://cdn.turkishairlines.com/m/157e27aba7dc4632/original/Travel-Guide-of-New-York-via-Turkish-Airlines.jpg"
+                    alt="Card image cap"
+                  />
+                  <h3 class="titreD">New York, USA</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    New York (NYC for short), is the most populous city in the
+                    United States.
+                  </p>
+                  <a href="destinations/newyork.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C5">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://media.routard.com/image/39/2/paris-de-nuit.1564392.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Paris, France</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Paris is the capital and most populous city of France.
+                  </p>
+                  <br />
+                  <a href="destinations/paris.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C6">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://stillmed.olympics.com/media/Images/OlympicOrg/News/2021/03/11/2020-03-11-Session-Tokyo-thumbnail.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Tokyo, Japan</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Tokyo, officially the Tokyo Metropolis is the capital and
+                    most populous prefecture of Japan.
+                  </p>
+                  <a href="destinations/tokyo.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C7">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://st.depositphotos.com/1927453/3869/i/600/depositphotos_38699803-stock-photo-reykjavik-cityspace-with-rainbow.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Reykjavik, Iceland</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Reykjavík is the capital and largest city of Iceland.
+                  </p>
+                  <br />
+                  <a href="destinations/reykjavik.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-4">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="card" style="width: 18rem" id="C8">
+                <div class="flip-card-front">
+                  <img
+                    class="card-img-top"
+                    src="https://g7y6h3a7.rocketcdn.me/wp-content/uploads/2019/03/Sortir-a-sydney-australie.jpg"
+                    alt="Card image cap"
+                  />
+
+                  <h3 class="titreD">Sydney, Australia</h3>
+                </div>
+                <div class="flip-card-back">
+                  <p class="card-text">
+                    Sydney is the capital city of the state of New South Wales,
+                    and the most populous city in Australia.
+                  </p>
+                  <a href="destinations/sydney.html" class="btn btn-primary"
+                    >See more</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--book now-->
+
+    <div class="container-fluid">
+      <form class="form-horizontal" role="form">
+        <h2>Book now!</h2>
+        <br />
+        <div class="form-group">
+          <label for="dest" class="col-sm-3 control-label"
+            >Choose a destination <span class="text-danger"> *</span></label
+          >
+          <div class="col-sm-9">
+            <select name="dest" id="dest" class="form-control">
+              <option></option>
+              <option>Antalya</option>
+              <option>Buenos Aires</option>
+              <option>Johannesburg</option>
+              <option>Malé</option>
+              <option>New York</option>
+              <option>Paris</option>
+              <option>Tokyo</option>
+              <option>Reykjavik</option>
+              <option>Sydney</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="depart" class="col-sm-3 control-label"
+            >Date of departure <span class="text-danger"> *</span></label
+          >
+          <div class="col-sm-9">
+            <input type="date" id="depart" class="form-control" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="arrivée" class="col-sm-3 control-label"
+            >Date of return <span class="text-danger"> *</span></label
+          >
+          <div class="col-sm-9">
+            <input type="date" id="arrivée" class="form-control" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="nbr" class="col-sm-3 control-label"
+            >Number of people <span class="text-danger"> *</span></label
+          >
+          <div class="col-sm-9">
+            <input
+              type="number"
+              id="nbr"
+              class="form-control"
+              placeholder="Please enter the number of people"
+            />
+          </div>
+        </div>
+
+        <!-- /.form-group -->
+        <div class="form-group">
+          <div class="col-sm-9 col-sm-offset-3" style="text-align: left">
+            <span class="help-block" style="color: #efecd9"
+              ><span class="text-danger"> *</span>Required fields</span
+            >
+          </div>
+        </div>
+      </form>
+      <button type="button" class="btn btn-book btn-block" id="boook">
+        Book
+      </button>
+      <!-- /form -->
+    </div>
+    <br />
+
+    <!--footer-->
+    <footer class="text-center foooter">
+      <div class="container p-4 pb-0">
+        <section class="mb-4">
+          <!-- FaceSee more -->
+          <a
+            class="btn btn-outline-light btn-floating m-1 icone"
+            href="#!"
+            role="button"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+
+          <!-- Twitter -->
+          <a
+            class="btn btn-outline-light btn-floating m-1 icone"
+            href="#!"
+            role="button"
+            ><i class="fab fa-twitter"></i
+          ></a>
+
+          <!-- Instagram -->
+          <a
+            class="btn btn-outline-light btn-floating m-1 icone"
+            href="#!"
+            role="button"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </section>
+      </div>
+      <div class="text-center p-3" style="background-color: #1a1718">
+        © 2021 Copyright: Travia
+      </div>
+    </footer>
+    <script src="main.js"></script>
+  </body>
+</html>
